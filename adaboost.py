@@ -57,6 +57,11 @@ if __name__ == '__main__':
     y_train = data.y_train
     y_test = data.y_test
 
+    from sklearn.preprocessing import MinMaxScaler
+    scl = MinMaxScaler()
+    X_train = scl.fit_transform(X_train)
+    X_test = scl.transform(X_test)
+
     # osp = SMOTE(random_state=10)
     osp = RandomUnderSampler(random_state=10)
     X_train, y_train = osp.fit_sample(X_train, y_train)  # SMOTE
